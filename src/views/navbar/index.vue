@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <router-view/>
+  <div>
     <van-tabbar route>
       <van-tabbar-item replace to="/home" icon="home-o">
         主页
@@ -16,20 +15,11 @@
 </template>
 
 <script>
-import {Tabbar, TabbarItem} from 'vant'
 export default {
-  name: 'App',
-  components: {
-        [Tabbar.name]: Tabbar,
-        [TabbarItem.name]: TabbarItem
-    }
+  name: 'Nav',
 }
 </script>
 
 <style scoped>
-body {
-  font-size: 16px;
-  background-color: #f8f8f8;
-  -webkit-font-smoothing: antialiased;
-}
+
 </style>

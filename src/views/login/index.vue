@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div style="margin-top: 40%">
+    <div class="login-header">
+      <img src="https://img.yzcdn.cn/vant/logo.png"/>
+    </div>
     <van-form @submit="onSubmit">
       <van-field
         v-model="username"
@@ -16,7 +19,7 @@
         placeholder="密码"
         :rules="[{ required: true, message: '请填写密码' }]"
       />
-      <div style="margin: 16px;">
+      <div style="margin: 16px">
         <van-button round block type="primary" native-type="submit">
           提交
         </van-button>
@@ -25,19 +28,13 @@
   </div>
 </template>
 <script>
-import { Form,Field,Button } from 'vant'
 export default {
-    name: 'Login',
-    data() {
+  name: 'Login',
+  data() {
     return {
       username: '',
       password: '',
     }
-  },
-  components: {
-      [Form.name]:Form,
-      [Field.name]:Field,
-      [Button.name]:Button
   },
   methods: {
     onSubmit(values) {
@@ -46,3 +43,13 @@ export default {
   },
 }
 </script>
+
+<style lang="less" scoped>
+.login-header{
+  width: 100%;
+  text-align: center;
+  img{
+    width: 100px;
+  }
+}
+</style>
