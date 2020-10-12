@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { router } from './router'
+import { store } from './utils/store'
 import {
     Form,
     Button,
@@ -9,7 +10,8 @@ import {
     Tabbar,
     TabbarItem,
     Swipe,
-    SwipeItem
+    SwipeItem,
+    Toast,
 } from 'vant'
 
 createApp(App)
@@ -22,4 +24,6 @@ createApp(App)
 .use(TabbarItem)
 .use(Swipe)
 .use(SwipeItem)
+.use(Toast)
+.use(store)
 .mount('#app')

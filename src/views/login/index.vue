@@ -3,7 +3,7 @@
     <div class="login-header">
       <img src="https://img.yzcdn.cn/vant/logo.png"/>
     </div>
-    <van-form @submit="onSubmit">
+    <van-form @submit="login">
       <van-field
         v-model="username"
         name="用户名"
@@ -28,6 +28,7 @@
   </div>
 </template>
 <script>
+import { store } from '@/utils/store'
 export default {
   name: 'Login',
   data() {
@@ -40,6 +41,9 @@ export default {
     onSubmit(values) {
       console.log('submit', values)
     },
+    login(){
+      store.set('ACCESS_TOKEN', '66666')
+    }
   },
 }
 </script>
