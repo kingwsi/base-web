@@ -2,7 +2,7 @@
   <div>
     <form action="/">
       <van-search
-        v-model="value"
+        v-model="swipeValue"
         show-action
         placeholder="请输入搜索关键词"
         @search="searchHandler"
@@ -19,6 +19,11 @@
 <script>
 export default {
     name: 'Home',
+    data() {
+      return {
+        swipeValue: null
+      }
+    },
     methods: {
       searchHandler(){
         console.log('checked search')

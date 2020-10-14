@@ -1,9 +1,9 @@
 <template>
   <div style="margin-top: 40%">
-    <div class="login-header">
+    <!-- <div class="login-header">
       <img src="https://img.yzcdn.cn/vant/logo.png"/>
-    </div>
-    <van-form @submit="login">
+    </div> -->
+    <van-form @submit="handleSubmit">
       <van-field
         v-model="username"
         name="用户名"
@@ -28,21 +28,37 @@
   </div>
 </template>
 <script>
-import { store } from '@/utils/store'
+import { Toast } from 'vant'
 export default {
   name: 'Login',
   data() {
     return {
       username: '',
       password: '',
+      state: {
+        time: 60,
+        loginBtn: false,
+        // login type: 0 email, 1 username, 2 telephone
+        loginType: 0,
+        smsSendBtn: false
+      }
     }
   },
   methods: {
     onSubmit(values) {
       console.log('submit', values)
     },
-    login(){
-      store.set('ACCESS_TOKEN', '66666')
+    handleSubmit(values){
+      const loginParams = {}
+      this.$store.dispatch('Login').then((res) => this.loginSuccess(res))
+    },
+    loginSuccess() {
+      this.$router.push({ path: '/home' })
+      console.log(Toast('login successfully'))
+      
+    },
+    requestFailed(err) {
+      console.log(Toast('request failed'))
     }
   },
 }

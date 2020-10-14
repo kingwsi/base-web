@@ -1,24 +1,15 @@
 # base-web
 
-## Project setup
+### 运行/预览
 ```
 yarn install
-```
-
-### Compiles and hot-reloads for development
-```
 yarn serve
 ```
-
-### Compiles and minifies for production
+### 构建发布
 ```
 yarn build
 ```
-
-### Lints and fixes files
+### 整理
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

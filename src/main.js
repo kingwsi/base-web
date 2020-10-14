@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import Vuex from 'vuex'
 import { router } from './router'
-import { store } from './utils/store'
+import { store } from './store'
 import {
     Form,
     Button,
@@ -13,17 +14,20 @@ import {
     SwipeItem,
     Toast,
 } from 'vant'
+import './mock'
 
-createApp(App)
-.use(router)
-.use(Form)
-.use(Button)
-.use(Search)
-.use(Field)
-.use(Tabbar)
-.use(TabbarItem)
-.use(Swipe)
-.use(SwipeItem)
-.use(Toast)
-.use(store)
+const app = createApp(App)
+
+app.use(Vuex)
+app.use(router)
+app.use(Form)
+app.use(Button)
+app.use(Search)
+app.use(Field)
+app.use(Tabbar)
+app.use(TabbarItem)
+app.use(Swipe)
+app.use(SwipeItem)
+app.use(Toast)
+app.use(store)
 .mount('#app')
