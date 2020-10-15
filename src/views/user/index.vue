@@ -1,8 +1,8 @@
 <template>
   <div>
-    <!-- <van-cell title="昵称" :value="userInfo.nickName" size="large" />
-    <van-cell title="用户名" :value="userInfo.username" size="large" label="描述信息" />
-    <van-cell title="手机号" :value="userInfo.mobileName" size="large" label="描述信息" /> -->
+    <van-loading v-if="loadding"/>
+    userInfo <br/> 
+    {{ userInfo }}<br/>
     <van-button type="warning" @click="handleLogout">登出</van-button>
   </div>
 </template>
@@ -11,7 +11,8 @@ export default {
   name: 'Account',
   data() {
     return {
-      userInfo: {}
+      userInfo: {},
+      loadding: false
     }
   },
   methods: {
@@ -21,13 +22,16 @@ export default {
     handleLogout() {
       console.log('logout..')
       this.$store.dispatch('Logout').then(() => {
-            this.$router.push({ name: 'login' })
+            this.$router.push({ path: '/login' })
           })
     }
   },
   mounted () {
-    this.userInfo = this.$store.getters.userInfo
-    console.log(this.userInfo)
+    this.loadding = true
+    setTimeout(() => {
+      this.userInfo = this.$store.getters.userInfo
+      this.loadding = false
+    }, 1500)
   }
 }
 </script>

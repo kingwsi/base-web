@@ -13,6 +13,7 @@ import {
     Swipe,
     SwipeItem,
     Toast,
+    Loading
 } from 'vant'
 import './mock'
 
@@ -20,6 +21,7 @@ const app = createApp(App)
 
 app.use(Vuex)
 app.use(router)
+app.use(store)
 app.use(Form)
 app.use(Button)
 app.use(Search)
@@ -28,6 +30,6 @@ app.use(Tabbar)
 app.use(TabbarItem)
 app.use(Swipe)
 app.use(SwipeItem)
+app.use(Loading)
 app.use(Toast)
-app.use(store)
 .mount('#app')

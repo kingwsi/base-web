@@ -3,7 +3,7 @@ import { login, logout } from '@/api/login'
 import { GetUserInfo } from '@/api/user'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
 
-const user = {
+export const user = {
   state: {
     token: '',
     name: '',
@@ -72,12 +72,14 @@ const user = {
     // 登出
     Logout ({ commit, state }) {
       return new Promise((resolve) => {
-        commit('SET_TOKEN', '')
         storage.remove(ACCESS_TOKEN)
+        commit('SET_TOKEN', '')
+        commit('SET_INFO', '')
+        commit('SET_NAME', {})
+        commit('SET_AVATAR', '')
+        resolve()
       })
     }
 
   }
 }
-
-export default user

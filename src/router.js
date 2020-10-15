@@ -24,8 +24,7 @@ router.beforeEach((to, from, next) => {
       next({ path: defaultRoutePath })
     } else {
       // 检查用户信息
-      console.log(store.getters)
-      if (!store.getters.userInfo) {
+      if (!store.getters.userInfo.username) {
         store.dispatch('GetInfo')
         console.log('get userinfo')
       }
