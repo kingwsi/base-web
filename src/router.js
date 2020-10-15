@@ -19,14 +19,14 @@ const router = createRouter({
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
+  NProgress.start()
   if (storage.get(ACCESS_TOKEN)) {
-    if (to.path === loginRoutePath) {
+    if (to.path === loginRoutePath || to.path === '/') {
       next({ path: defaultRoutePath })
     } else {
       // 检查用户信息
       if (!store.getters.userInfo.username) {
         store.dispatch('GetInfo')
-        console.log('get userinfo')
       }
       next()
     }

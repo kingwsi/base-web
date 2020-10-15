@@ -2,14 +2,17 @@ export const routes = [
   {
     name: '主页',
     path: '/home',
-    component: () => import('@/views/home')
+    component: () => import('@/views/home'),
+    meta: {
+      showBar: true
+    }
   },
   {
     name: '会员中心',
     path: '/user',
     component: () => import('@/views/user'),
     meta: {
-      title: '会员中心'
+      showBar: true
     }
   },
   {
@@ -17,7 +20,7 @@ export const routes = [
     path: '/activity',
     component: () => import('@/views/activity'),
     meta: {
-      title: '活动'
+      showBar: true
     }
   },
   {
