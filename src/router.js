@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import { routes } from '@/config/routerConfig'
 import { store } from '@/store'
 import storage from 'store'
@@ -19,12 +19,12 @@ const router = createRouter({
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
-  console.log(to)
   if (storage.get(ACCESS_TOKEN)) {
     if (to.path === loginRoutePath) {
       next({ path: defaultRoutePath })
     } else {
       // 检查用户信息
+      console.log(store.getters)
       if (!store.getters.userInfo) {
         store.dispatch('GetInfo')
         console.log('get userinfo')

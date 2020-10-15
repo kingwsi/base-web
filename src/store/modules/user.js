@@ -58,7 +58,7 @@ const user = {
             reject(new Error('getInfo: roles must be a non-null array !'))
           }
           const { username, avatar, nickName } = data
-          console.log(data)
+          console.log('存储用户信息', data)
           commit('SET_INFO', data)
           commit('SET_NAME', { name: username, nickName: nickName })
           commit('SET_AVATAR', avatar)
