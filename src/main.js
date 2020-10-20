@@ -13,7 +13,13 @@ import {
     Swipe,
     SwipeItem,
     Toast,
-    Loading
+    Loading,
+    Grid,
+    GridItem,
+    CellGroup,
+    Cell,
+    Tag,
+    Icon
 } from 'vant'
 import './mock'
 
@@ -32,4 +38,10 @@ app.use(Swipe)
 app.use(SwipeItem)
 app.use(Loading)
 app.use(Toast)
+app.use(Grid)
+app.use(GridItem),
+app.use(Cell),
+app.use(CellGroup)
+app.use(Tag)
+app.use(Icon)
 .mount('#app')
