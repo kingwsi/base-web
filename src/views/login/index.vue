@@ -25,12 +25,38 @@
         </van-button>
       </div>
     </van-form>
+    <span> {{ fullName }}</span>
+    <van-button type="primary" @click="modifyName">
+      TEST
+    </van-button>
   </div>
 </template>
 <script>
 import { Toast } from 'vant'
+import { store } from '@/store'
+import { ref, reactive } from 'vue'
 export default {
   name: 'Login',
+  setup() {
+    const fullName = ref('')
+    const modifyName = ()=> {
+      fullName.value = 'HANP'
+    }
+    const handleSubmit = async ()=>{
+      const loginParams = {}
+      store.dispatch('Login').then((res) => loginSuccess(res))
+    }
+    const loginSuccess = ()=> {
+      this.$router.push({ path: '/home' })
+      console.log(Toast('login successfully'))
+      
+    }
+    return {
+      fullName,
+      modifyName,
+      handleSubmit
+    }
+  },
   data() {
     return {
       username: '',
@@ -48,10 +74,10 @@ export default {
     onSubmit(values) {
       console.log('submit', values)
     },
-    handleSubmit(values){
-      const loginParams = {}
-      this.$store.dispatch('Login').then((res) => this.loginSuccess(res))
-    },
+    // handleSubmit(values){
+    //   const loginParams = {}
+    //   this.$store.dispatch('Login').then((res) => this.loginSuccess(res))
+    // },
     loginSuccess() {
       this.$router.push({ path: '/home' })
       console.log(Toast('login successfully'))
