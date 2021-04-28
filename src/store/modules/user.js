@@ -30,10 +30,10 @@ export const user = {
 
   actions: {
     // 登录
-    Login ({ commit }, userInfo) {
+    Login({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
         console.log(userInfo)
-        setTimeout(()=>{
+        setTimeout(() => {
           console.log('login successfully!')
           storage.set(ACCESS_TOKEN, 'token-6666666', 7 * 24 * 60 * 60 * 1000)
           commit('SET_TOKEN', '6666666')
@@ -50,7 +50,7 @@ export const user = {
     },
 
     // 获取用户信息
-    GetInfo ({ commit }) {
+    GetInfo({ commit }) {
       return new Promise((resolve, reject) => {
         GetUserInfo().then(response => {
           const { data } = response
@@ -70,7 +70,7 @@ export const user = {
     },
 
     // 登出
-    Logout ({ commit, state }) {
+    Logout({ commit, state }) {
       return new Promise((resolve) => {
         storage.remove(ACCESS_TOKEN)
         commit('SET_TOKEN', '')

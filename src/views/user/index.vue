@@ -22,6 +22,7 @@
   </div>
 </template>
 <script>
+import { router } from '@/router'
 export default {
   name: 'Account',
   data() {
@@ -37,8 +38,8 @@ export default {
     handleLogout() {
       console.log('logout..')
       this.$store.dispatch('Logout').then(() => {
-            this.$router.push({ path: '/login' })
-          })
+        router.push({ path: '/login' })
+      })
     }
   },
   mounted () {

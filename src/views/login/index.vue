@@ -25,76 +25,40 @@
         </van-button>
       </div>
     </van-form>
-    <span> {{ fullName }}</span>
-    <van-button type="primary" @click="modifyName">
-      TEST
-    </van-button>
   </div>
 </template>
 <script>
 import { Toast } from 'vant'
-import { store } from '@/store'
-import { ref, reactive } from 'vue'
+import { useStore } from 'vuex'
+import { ref, reactive,toRefs } from 'vue'
+import { router } from '@/router'
 export default {
-  name: 'Login',
   setup() {
-    const fullName = ref('')
-    const modifyName = ()=> {
-      fullName.value = 'HANP'
-    }
-    const handleSubmit = async ()=>{
-      const loginParams = {}
+    const store = useStore()
+    const state = reactive({
+      username:'15555555555',
+      password: '123456'
+    })
+    const handleSubmit = async () => {
       store.dispatch('Login').then((res) => loginSuccess(res))
     }
-    const loginSuccess = ()=> {
-      this.$router.push({ path: '/home' })
-      console.log(Toast('login successfully'))
-      
+    const loginSuccess = () => {
+      router.push({ path: '/home' })
+      Toast('login successfully')
     }
     return {
-      fullName,
-      modifyName,
+      ...toRefs(state),
       handleSubmit
     }
-  },
-  data() {
-    return {
-      username: '',
-      password: '',
-      state: {
-        time: 60,
-        loginBtn: false,
-        // login type: 0 email, 1 username, 2 telephone
-        loginType: 0,
-        smsSendBtn: false
-      }
-    }
-  },
-  methods: {
-    onSubmit(values) {
-      console.log('submit', values)
-    },
-    // handleSubmit(values){
-    //   const loginParams = {}
-    //   this.$store.dispatch('Login').then((res) => this.loginSuccess(res))
-    // },
-    loginSuccess() {
-      this.$router.push({ path: '/home' })
-      console.log(Toast('login successfully'))
-      
-    },
-    requestFailed(err) {
-      console.log(Toast('request failed'))
-    }
-  },
+  }
 }
 </script>
 
 <style lang="less" scoped>
-.login-header{
+.login-header {
   width: 100%;
   text-align: center;
-  img{
+  img {
     width: 100px;
   }
 }
