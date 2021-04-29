@@ -4,22 +4,23 @@ import Vuex from 'vuex'
 import { router } from './router'
 import { store } from './store'
 import {
-    Form,
-    Button,
-    Search,
-    Field,
-    Tabbar,
-    TabbarItem,
-    Swipe,
-    SwipeItem,
-    Toast,
-    Loading,
-    Grid,
-    GridItem,
-    CellGroup,
-    Cell,
-    Tag,
-    Icon
+  Form,
+  Button,
+  Search,
+  Field,
+  Tabbar,
+  TabbarItem,
+  Swipe,
+  SwipeItem,
+  Toast,
+  Loading,
+  Grid,
+  GridItem,
+  CellGroup,
+  Cell,
+  Tag,
+  Icon,
+  Image
 } from 'vant'
 import './mock'
 
@@ -44,4 +45,5 @@ app.use(Cell),
 app.use(CellGroup)
 app.use(Tag)
 app.use(Icon)
-.mount('#app')
+app.use(Image)
+  .mount('#app')

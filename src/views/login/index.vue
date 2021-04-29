@@ -20,7 +20,7 @@
         :rules="[{ required: true, message: '请填写密码' }]"
       />
       <div style="margin: 16px">
-        <van-button round block type="primary" native-type="submit">
+        <van-button round block type="primary" :loading="loginBtnLoading" native-type="submit">
           提交
         </van-button>
       </div>
@@ -39,8 +39,18 @@ export default {
       username:'15555555555',
       password: '123456'
     })
+
+    const loginBtnLoading = ref(false)
+
     const handleSubmit = async () => {
-      store.dispatch('Login').then((res) => loginSuccess(res))
+      loginBtnLoading.value = true
+      store.dispatch('Login', state).then((res) => {
+        console.log(res)
+        if(res.code === 200) {
+          loginSuccess()
+        }
+        loginBtnLoading.value = false
+      })
     }
     const loginSuccess = () => {
       router.push({ path: '/home' })
@@ -48,6 +58,7 @@ export default {
     }
     return {
       ...toRefs(state),
+      loginBtnLoading,
       handleSubmit
     }
   }
