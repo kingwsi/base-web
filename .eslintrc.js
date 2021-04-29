@@ -1,3 +1,8 @@
+/**
+ * ESLint configuration
+ *
+ * doc http://eslint.cn/docs/rules/
+ */
 module.exports = {
   root: true,
   env: {
@@ -62,7 +67,8 @@ module.exports = {
       'imports': 'never',
       'exports': 'never',
       'functions': 'never'
-    }]
+    }],
+    'no-trailing-spaces': 'error'
   },
   parserOptions: {
     parser: 'babel-eslint'
