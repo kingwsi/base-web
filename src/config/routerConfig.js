@@ -26,7 +26,7 @@ export const routes = [
   {
     name: '登录',
     path: '/login',
-    component: () => import('@/views/login'),
+    component: () => import('@/views/login')
   },
   { path: '/:pathMatch(.*)*',
     name: 'NotFound',
